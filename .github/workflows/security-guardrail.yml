@@ -1,0 +1,16 @@
+name: Continuous Security & Compliance Gate
+
+on: [push, pull_request]
+
+jobs:
+  compliance-audit:
+    name: Execute Static Infrastructure Security Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out project repository
+        uses: actions/checkout@v3
+
+      - name: Audit Terraform Blueprints via TFSec
+        uses: aquasecurity/tfsec-action@v1.0.0
+        with:
+          working_directory: ./terraform

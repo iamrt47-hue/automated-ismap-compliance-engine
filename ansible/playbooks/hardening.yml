@@ -1,0 +1,18 @@
+---
+- name: Automated ISMAP System Hardening Execution
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Remediate Secure Shell configurations to block root exposure
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin'
+        line: 'PermitRootLogin no'
+        state: present
+
+    - name: Enforce strict file access mask controls on systemic security stores
+      ansible.builtin.file:
+        path: /etc/shadow
+        owner: root
+        group: root
+        mode: '0000'

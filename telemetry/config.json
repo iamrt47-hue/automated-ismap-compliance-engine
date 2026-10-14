@@ -1,0 +1,10 @@
+{
+  "security_groups": {
+    "ingress": [
+      {
+        "port": 22,
+        "cidr_block": "0.0.0.0/0"
+      }
+    ]
+  }
+}
